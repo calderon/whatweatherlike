@@ -1,0 +1,20 @@
+{
+  "name": "whatweatherlike",
+  "version": "0.0.1",
+  "description": "Check the weather in a place",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/calderon/whatweatherlike.git"
+  },
+  "keywords": [],
+  "author": "Daniel Calderón",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/calderon/whatweatherlike/issues"
+  },
+  "homepage": "https://github.com/calderon/whatweatherlike#readme"
+}
