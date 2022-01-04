@@ -4,6 +4,8 @@
   "description": "Check the weather in a place",
   "main": "index.js",
   "scripts": {
+    "dev": "nodemon server",
+    "start": "node server",
     "test": "jest --detectOpenHandles --passWithNoTests",
     "test:watch": "npm test --watchAll"
   },
@@ -19,6 +21,11 @@
   },
   "homepage": "https://github.com/calderon/whatweatherlike#readme",
   "devDependencies": {
-    "jest": "^27.4.5"
+    "jest": "^27.4.5",
+    "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "express": "^4.17.2",
+    "supertest": "^6.1.6"
   }
 }
