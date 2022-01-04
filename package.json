@@ -4,7 +4,8 @@
   "description": "Check the weather in a place",
   "main": "index.js",
   "scripts": {
-    "test": "jest --watchAll --detectOpenHandles"
+    "test": "jest --detectOpenHandles --passWithNoTests",
+    "test:watch": "npm test --watchAll"
   },
   "repository": {
     "type": "git",
