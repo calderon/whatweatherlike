@@ -1,6 +1,6 @@
 const weatherService = require('../services/weather_api.js')
 
-const getWeather = async (req, res, next) => {
+exports.getWeather = async (req, res, next) => {
   try {
     const weather = await weatherService.get()
 
@@ -9,5 +9,3 @@ const getWeather = async (req, res, next) => {
     next(err)
   }
 }
-
-module.exports = { getWeather }
