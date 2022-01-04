@@ -4,8 +4,8 @@
   "description": "Check the weather in a place",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js",
-    "start": "node index",
+    "dev": "nodemon server",
+    "start": "node server",
     "test": "jest --detectOpenHandles --passWithNoTests",
     "test:watch": "npm test --watchAll"
   },
@@ -25,6 +25,7 @@
     "nodemon": "^2.0.15"
   },
   "dependencies": {
-    "express": "^4.17.2"
+    "express": "^4.17.2",
+    "supertest": "^6.1.6"
   }
 }
