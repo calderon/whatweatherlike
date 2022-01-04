@@ -4,7 +4,7 @@
   "description": "Check the weather in a place",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --watchAll --detectOpenHandles"
   },
   "repository": {
     "type": "git",
@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/calderon/whatweatherlike/issues"
   },
-  "homepage": "https://github.com/calderon/whatweatherlike#readme"
+  "homepage": "https://github.com/calderon/whatweatherlike#readme",
+  "devDependencies": {
+    "jest": "^27.4.5"
+  }
 }
