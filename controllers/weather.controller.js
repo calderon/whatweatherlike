@@ -1,6 +1,10 @@
-const getWeather = (req, res, next) => {
+const weatherService = require('../services/weather_api.js')
+
+const getWeather = async (req, res, next) => {
   try {
-    res.status(200).json({})
+    const weather = await weatherService.get()
+
+    res.status(200).json(weather)
   } catch (err) {
     next(err)
   }

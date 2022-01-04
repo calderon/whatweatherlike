@@ -5,7 +5,7 @@ const weatherRoutes = require('./routes/weather.routes.js')
 
 app.use(express.json())
 
-app.use('/weather', weatherRoutes)
+app.use('/api/weather', weatherRoutes)
 
 app.get('/', (req, res) => {
   res.json({})

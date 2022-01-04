@@ -1,7 +1,7 @@
 const request = require('supertest')
 const app = require('../../app')
 
-const endPointUrl = '/weather'
+const endPointUrl = '/api/weather'
 
 describe(endPointUrl, () => {
   it(`GET ${endPointUrl}`, async () => {
