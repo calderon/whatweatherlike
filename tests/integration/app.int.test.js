@@ -5,8 +5,8 @@ describe('/', () => {
   it('GET /', async () => {
     const response = await request(app).get('/')
 
-    expect(response.text).toBe('Hello World!')
-    expect(response.type).toBe('text/html')
+    expect(response.type).toBe('application/json')
+    expect(response.body).toBeDefined()
     expect(response.statusCode).toBe(200)
   })
 })
