@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon server",
     "start": "node server",
-    "test": "jest --detectOpenHandles --passWithNoTests",
+    "test": "jest --forceExit --detectOpenHandles --passWithNoTests",
     "test:watch": "jest --detectOpenHandles --passWithNoTests --watchAll",
     "format": "prettier --write '*.js'",
     "lint": "eslint ."
@@ -25,6 +25,7 @@
   "devDependencies": {
     "eslint": "^8.6.0",
     "jest": "^27.4.5",
+    "nock": "^13.2.1",
     "nodemon": "^2.0.15"
   },
   "dependencies": {

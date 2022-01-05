@@ -12,7 +12,7 @@ beforeEach(() => {
   next = jest.fn()
 })
 
-describe('Weather Controller.getWeather', () => {
+describe('weatherController.getWeather', () => {
   it('should have a getWeather method', () => {
     expect(typeof weatherController.getWeather).toBe('function')
   })
