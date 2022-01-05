@@ -20,4 +20,7 @@ jobs:
       - run: npm ci
       - run: npm run build --if-present
       - run: npm run lint
-      - run: npm test
+      - name: Run tests
+          env:
+            OPENWEATHER_TOKEN: ${{ secrets.OPENWEATHER_TOKEN }}
+          run: npm test
