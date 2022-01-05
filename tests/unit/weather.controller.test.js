@@ -23,12 +23,15 @@ describe('Weather Controller.getWeather', () => {
   })
 
   it('should return json body and response code 200', async () => {
-    weatherService.get.mockReturnValue({})
+    weatherService.get.mockReturnValue()
     await weatherController.getWeather(req, res, next)
 
     expect(res.statusCode).toBe(200)
     expect(res._isEndCalled()).toBeTruthy()
-    expect(res._getJSONData()).toStrictEqual({})
+    expect(res._getJSONData()).toStrictEqual({
+      message: 'q query param is needed',
+    })
+    expect(res._isJSON()).toBeTruthy()
   })
 
   it('should handle errors', async () => {

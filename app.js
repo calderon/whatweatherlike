@@ -1,11 +1,19 @@
 const express = require('express')
+const cors = require('cors')
 const app = express()
 
 const weatherRoutes = require('./routes/weather.routes.js')
 
+app.use(cors())
 app.use(express.json())
 
 app.use('/api/weather', weatherRoutes)
+
+app.use((error, req, res, next) => {
+  res.status(500).json({
+    message: error.message,
+  })
+})
 
 app.get('/', (req, res) => {
   res.json({})
