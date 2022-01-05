@@ -5,7 +5,7 @@ const config = require('../utils/config.js')
 const baseURL = 'https://api.openweathermap.org/data/2.5/weather'
 
 const baseParams = {
-  appid: config.OPENWEATHER_KEY,
+  appid: config.OPENWEATHER_TOKEN,
   units: 'metric',
   lang: 'es',
 }
