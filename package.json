@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "nodemon server",
     "start": "node server",
-    "test": "jest --forceExit --detectOpenHandles --passWithNoTests",
-    "test:watch": "jest --detectOpenHandles --passWithNoTests --watchAll",
+    "test": "jest --passWithNoTests --detectOpenHandles --forceExit",
+    "test:watch": "jest --passWithNoTests --watchAll --detectOpenHandles",
     "format": "prettier --write '*.js'",
     "lint": "eslint ."
   },
@@ -33,6 +33,7 @@
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.2",
+    "mongoose": "^6.1.5",
     "node-mocks-http": "^1.11.0",
     "supertest": "^6.1.6"
   }
