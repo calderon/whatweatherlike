@@ -10,4 +10,13 @@ const connect = async () => {
   }
 }
 
-module.exports = { connect }
+const close = async () => {
+  try {
+    await mongoose.disconnect()
+  } catch (error) {
+    console.error('Error disconnecting database')
+    console.error(error)
+  }
+}
+
+module.exports = { connect, close }

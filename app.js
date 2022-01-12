@@ -2,11 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const app = express()
 
-const mongodb = require('./utils/mongodb.connect')
-
 const weatherRoutes = require('./routes/weather.routes.js')
-
-mongodb.connect()
 
 app.use(cors())
 app.use(express.json())
