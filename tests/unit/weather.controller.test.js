@@ -1,7 +1,10 @@
 const httpMocks = require('node-mocks-http')
 
-const weatherController = require('../../controllers/weather.controller')
 const weatherService = require('../../services/weather_api.js')
+const weatherController = require('../../controllers/weather.controller.js')
+const Place = require('../../models/place.js')
+
+const weatherPayload = require('../mocks/weather.json')
 
 weatherService.get = jest.fn()
 
@@ -13,32 +16,21 @@ beforeEach(() => {
 })
 
 describe('weatherController.getWeather', () => {
-  it('should have a getWeather method', () => {
-    expect(typeof weatherController.getWeather).toBe('function')
-  })
+  describe('place is not in our database', () => {
+    it('should be saved', async () => {
+      const getPlace = async (name) => {
+        return Place.findOne({ name })
+      }
 
-  it('should call weatherService.get', async () => {
-    await weatherController.getWeather(req, res, next)
-    expect(weatherService.get).toHaveBeenCalled()
-  })
+      weatherService.get.mockReturnValue(weatherPayload)
+      const name = 'Madrid'
+      req.query.q = name
 
-  it('should return json body and response code 200', async () => {
-    weatherService.get.mockReturnValue({})
-    await weatherController.getWeather(req, res, next)
-
-    expect(res.statusCode).toBe(200)
-    expect(res._isEndCalled()).toBeTruthy()
-    expect(res._isJSON()).toBeTruthy()
-    expect(res._getJSONData()).toStrictEqual({})
-  })
-
-  it('should handle errors', async () => {
-    const errorMessage = {
-      message: 'Error',
-    }
-    const rejectedPromise = Promise.reject(errorMessage)
-    weatherService.get.mockReturnValue(rejectedPromise)
-    await weatherController.getWeather(req, res, next)
-    expect(next).toHaveBeenCalledWith(errorMessage)
+      let record = await getPlace(name)
+      expect(record).toBeNull()
+      await weatherController.getWeather(req, res, next)
+      record = await getPlace(name)
+      expect(record.name).toBe(name)
+    })
   })
 })

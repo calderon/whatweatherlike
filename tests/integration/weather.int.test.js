@@ -1,8 +1,8 @@
 const nock = require('nock')
 const request = require('supertest')
-const app = require('../../app')
+const app = require('../../app.js')
 
-const config = require('../../utils/config')
+const config = require('../../utils/config.js')
 
 const endPointUrl = '/api/weather'
 
@@ -12,7 +12,7 @@ const baseParams = {
   lang: 'es',
 }
 
-const weatherData = require('../mocks/weather.json')
+const weatherPayload = require('../mocks/weather.json')
 
 describe(endPointUrl, () => {
   it(`GET ${endPointUrl} with no query fails`, async () => {
@@ -27,18 +27,18 @@ describe(endPointUrl, () => {
   it(`GET ${endPointUrl} with query`, async () => {
     const params = new URLSearchParams(Object.assign({}, baseParams))
 
-    params.append('q', 'Sevilla')
+    params.append('q', 'Madrid')
 
     nock('https://api.openweathermap.org/data/2.5')
       .get('/weather')
       .query(params)
-      .reply(200, weatherData)
+      .reply(200, weatherPayload)
 
-    const response = await request(app).get(`${endPointUrl}?q=Sevilla&appi`)
+    const response = await request(app).get(`${endPointUrl}?q=Madrid&appi`)
 
     expect(response.statusCode).toBe(200)
     expect(response.type).toBe('application/json')
     expect(response.body).toBeDefined()
-    expect(response.body).toEqual(weatherData)
+    expect(response.body).toEqual(weatherPayload)
   })
 })

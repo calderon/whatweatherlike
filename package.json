@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "nodemon server",
     "start": "node server",
+    "debug": "node --inspect-brk server",
     "test": "jest --passWithNoTests --detectOpenHandles --forceExit",
     "test:watch": "jest --passWithNoTests --watchAll --detectOpenHandles",
     "format": "prettier --write '*.js'",
