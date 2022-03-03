@@ -1,44 +1,43 @@
 {
   "coord": {
-    "lon": -5.9761,
-    "lat": 37.3824
+    "lon": -3.7026,
+    "lat": 40.4165
   },
   "weather": [
     {
       "id": 800,
       "main": "Clear",
       "description": "cielo claro",
-      "icon": "01d"
+      "icon": "01n"
     }
   ],
   "base": "stations",
   "main": {
-    "temp": 13.07,
-    "feels_like": 12.29,
-    "temp_min": 12.06,
-    "temp_max": 13.93,
-    "pressure": 1023,
-    "humidity": 71
+    "temp": 13.06,
+    "feels_like": 11.54,
+    "temp_min": 10,
+    "temp_max": 14.1,
+    "pressure": 1015,
+    "humidity": 43
   },
   "visibility": 10000,
   "wind": {
-    "speed": 1.34,
-    "deg": 241,
-    "gust": 4.47
+    "speed": 0.51,
+    "deg": 0
   },
   "clouds": {
     "all": 0
   },
-  "dt": 1641384359,
+  "dt": 1645381322,
   "sys": {
     "type": 2,
-    "id": 2011488,
+    "id": 2007545,
     "country": "ES",
-    "sunrise": 1641368312,
-    "sunset": 1641403174
+    "sunrise": 1645340526,
+    "sunset": 1645379721
   },
   "timezone": 3600,
-  "id": 2510911,
-  "name": "Seville",
+  "id": 3117735,
+  "name": "Madrid",
   "cod": 200
 }

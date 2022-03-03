@@ -15,12 +15,13 @@ jobs:
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: '16'
           cache: 'npm'
       - run: npm ci
       - run: npm run build --if-present
       - run: npm run lint
       - name: Run tests
         env:
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
           OPENWEATHER_TOKEN: ${{ secrets.OPENWEATHER_TOKEN }}
         run: npm test

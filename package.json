@@ -6,8 +6,9 @@
   "scripts": {
     "dev": "nodemon server",
     "start": "node server",
-    "test": "jest --forceExit --detectOpenHandles --passWithNoTests",
-    "test:watch": "jest --detectOpenHandles --passWithNoTests --watchAll",
+    "debug": "node --inspect-brk server",
+    "test": "jest --passWithNoTests --detectOpenHandles --forceExit",
+    "test:watch": "jest --passWithNoTests --watchAll --detectOpenHandles",
     "format": "prettier --write '*.js'",
     "lint": "eslint ."
   },
@@ -25,6 +26,7 @@
   "devDependencies": {
     "eslint": "^8.6.0",
     "jest": "^27.4.5",
+    "mongodb-memory-server": "^8.4.0",
     "nock": "^13.2.1",
     "nodemon": "^2.0.15"
   },
@@ -33,6 +35,7 @@
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.2",
+    "mongoose": "^6.1.5",
     "node-mocks-http": "^1.11.0",
     "supertest": "^6.1.6"
   }
