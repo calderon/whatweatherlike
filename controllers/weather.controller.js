@@ -1,13 +1,13 @@
 const moment = require('moment')
 
-const weatherService = require('../services/weather_api.js')
+const openWeatherService = require('../services/openweather.js')
 const PlaceModel = require('../models/place.js')
-const WeatherModel = require('../models/weather.js')
+const ForecastModel = require('../models/forecast.js')
 
 exports.getWeather = async (req, res, next) => {
   try {
     let { q: queryPlace } = req.query
-    const weatherQuery = await weatherService.get(queryPlace)
+    const weatherQuery = await openWeatherService.get(queryPlace)
 
     let place = await PlaceModel.findOne({ name: queryPlace })
     if (place === null) {
@@ -21,7 +21,7 @@ exports.getWeather = async (req, res, next) => {
       await place.save()
     }
 
-    let weather = new WeatherModel({
+    let forecast = new ForecastModel({
       temp: weatherQuery.main.temp,
       tempFeelsLike: weatherQuery.main.feels_like,
       tempMin: weatherQuery.main.temp_min,
@@ -38,9 +38,9 @@ exports.getWeather = async (req, res, next) => {
       timezone: weatherQuery.timezone
     })
 
-    weather = await weather.save()
+    forecast = await forecast.save()
 
-    res.status(200).json(weather)
+    res.status(200).json(forecast)
   } catch (err) {
     next(err)
   }
