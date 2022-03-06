@@ -17,7 +17,9 @@ const PlaceSchema = new mongoose.Schema({
   timezone: {
     type: Number,
     required: true,
-  },
+  }
+}, {
+  timestamps: true
 })
 
 PlaceSchema.set('toJSON', {
