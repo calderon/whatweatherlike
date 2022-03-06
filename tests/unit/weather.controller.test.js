@@ -1,13 +1,13 @@
 const httpMocks = require('node-mocks-http')
 
-const weatherService = require('../../services/weather_api.js')
+const openWeatherService = require('../../services/openweather.js')
 const weatherController = require('../../controllers/weather.controller.js')
-const Place = require('../../models/place.js')
-const Weather = require('../../models/weather.js')
+const PlaceModel = require('../../models/place.js')
+const ForecastModel = require('../../models/forecast.js')
 
-const weatherPayload = require('../mocks/openweather-api.json')
+const openWeatherPayload = require('../mocks/openweather.json')
 
-weatherService.get = jest.fn()
+openWeatherService.get = jest.fn()
 
 let req, res, next
 beforeEach(() => {
@@ -19,17 +19,17 @@ beforeEach(() => {
 describe('weatherController.getWeather', () => {
   describe('place has not been previously saved', () => {
     it('should be saved', async () => {
-      weatherService.get.mockReturnValue(weatherPayload)
-      req.query.q = weatherPayload.name
+      openWeatherService.get.mockReturnValue(openWeatherPayload)
+      req.query.q = openWeatherPayload.name
 
-      let record = await Place.findOne({ name: weatherPayload.name })
-      let count = await Place.count()
+      let record = await PlaceModel.findOne({ name: openWeatherPayload.name })
+      let count = await PlaceModel.count()
       expect(record).toBeNull()
       expect(count).toEqual(0)
       await weatherController.getWeather(req, res, next)
-      record = await Place.findOne({ name: weatherPayload.name })
-      expect(record.name).toBe(weatherPayload.name)
-      count = await Place.count()
+      record = await PlaceModel.findOne({ name: openWeatherPayload.name })
+      expect(record.name).toBe(openWeatherPayload.name)
+      count = await PlaceModel.count()
       expect(count).toEqual(1)
     })
   })
@@ -38,45 +38,47 @@ describe('weatherController.getWeather', () => {
     let place
 
     beforeAll(async () => {
-      place = new Place({
-        name: weatherPayload.name,
-        lat: weatherPayload.coord.lat,
-        lon: weatherPayload.coord.lon,
-        timezone: weatherPayload.timezone,
+      place = new PlaceModel({
+        name: openWeatherPayload.name,
+        lat: openWeatherPayload.coord.lat,
+        lon: openWeatherPayload.coord.lon,
+        timezone: openWeatherPayload.timezone,
       })
 
       await place.save()
     })
 
     it('should not be saved again', async () => {
-      weatherService.get.mockReturnValue(weatherPayload)
-      req.query.q = weatherPayload.name
+      openWeatherService.get.mockReturnValue(openWeatherPayload)
+      req.query.q = openWeatherPayload.name
 
-      let count = await Place.count()
+      let count = await PlaceModel.count()
       expect(count).toEqual(1)
 
-      let record = await Place.findOne({ name: weatherPayload.name })
+      let record = await PlaceModel.findOne({
+        name: openWeatherPayload.name
+      })
       expect(record).not.toBeNull()
-      expect(record.name).toBe(weatherPayload.name)
+      expect(record.name).toBe(openWeatherPayload.name)
 
       await weatherController.getWeather(req, res, next)
 
-      count = await Place.count()
+      count = await PlaceModel.count()
       expect(count).toEqual(1)
     })
   })
 
   describe('weather', () => {
     it('should be saved', async () => {
-      weatherService.get.mockReturnValue(weatherPayload)
-      req.query.q = weatherPayload.name
+      openWeatherService.get.mockReturnValue(openWeatherPayload)
+      req.query.q = openWeatherPayload.name
 
-      let count = await Weather.count()
+      let count = await ForecastModel.count()
       expect(count).toEqual(0)
 
       await weatherController.getWeather(req, res, next)
 
-      count = await Weather.count()
+      count = await ForecastModel.count()
       expect(count).toEqual(1)
     })
   })

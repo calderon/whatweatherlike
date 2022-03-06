@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const WeatherSchema = new mongoose.Schema({
+const ForecastSchema = new mongoose.Schema({
   temp: {
     type: Number,
     required: true
@@ -61,7 +61,7 @@ const WeatherSchema = new mongoose.Schema({
   timestamps: true
 })
 
-WeatherSchema.set('toJSON', {
+ForecastSchema.set('toJSON', {
   transform: (document, returnedObject) => {
     returnedObject.id = returnedObject._id.toString()
     delete returnedObject._id
@@ -69,6 +69,6 @@ WeatherSchema.set('toJSON', {
   },
 })
 
-const WeatherModel = mongoose.model('Weather', WeatherSchema)
+const ForecastModel = mongoose.model('Weather', ForecastSchema)
 
-module.exports = WeatherModel
+module.exports = ForecastModel

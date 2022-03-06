@@ -4,7 +4,7 @@ const app = require('../../app.js')
 
 const config = require('../../utils/config.js')
 
-const WeatherModel = require('../../models/weather.js')
+const ForecastModel = require('../../models/forecast.js')
 
 const endPointUrl = '/api/weather'
 
@@ -14,12 +14,12 @@ const baseParams = {
   lang: 'es',
 }
 
-const openWeatherPayload = require('../mocks/openweather-api.json')
-const weatherPayload = require('../mocks/weather.json')
+const openWeatherPayload = require('../mocks/openweather.json')
+const forecastPayload = require('../mocks/forecast.json')
 
 describe(endPointUrl, () => {
   beforeAll(() => {
-    WeatherModel.prototype.save = jest.fn().mockResolvedValue(weatherPayload)
+    ForecastModel.prototype.save = jest.fn().mockResolvedValue(forecastPayload)
   })
 
   it(`GET ${endPointUrl} with no query fails`, async () => {
@@ -46,6 +46,6 @@ describe(endPointUrl, () => {
     expect(response.statusCode).toBe(200)
     expect(response.type).toBe('application/json')
     expect(response.body).toBeDefined()
-    expect(response.body).toEqual(weatherPayload)
+    expect(response.body).toEqual(forecastPayload)
   })
 })
