@@ -69,6 +69,6 @@ ForecastSchema.set('toJSON', {
   },
 })
 
-const ForecastModel = mongoose.model('Weather', ForecastSchema)
+const ForecastModel = mongoose.model('Forecast', ForecastSchema)
 
 module.exports = ForecastModel
