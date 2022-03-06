@@ -1,43 +1,19 @@
 {
-  "coord": {
-    "lon": -3.7026,
-    "lat": 40.4165
-  },
-  "weather": [
-    {
-      "id": 800,
-      "main": "Clear",
-      "description": "cielo claro",
-      "icon": "01n"
-    }
-  ],
-  "base": "stations",
-  "main": {
+    "id": "6224adecf24ca7b12242c612",
+    "cloudiness": 0,
+    "calculatedAt": "2022-02-20T18:22:02.000Z",
+    "createdAt": "2022-03-06T12:34:30.558Z",
+    "sunriseAt": "2022-02-20T07:02:06.000Z",
+    "sunsetAt": "2022-02-20T17:55:21.000Z",
     "temp": 13.06,
-    "feels_like": 11.54,
-    "temp_min": 10,
-    "temp_max": 14.1,
+    "tempFeelsLike": 11.54,
+    "tempMax": 14.1,
+    "tempMin": 10,
+    "humidity": 43,
     "pressure": 1015,
-    "humidity": 43
-  },
-  "visibility": 10000,
-  "wind": {
-    "speed": 0.51,
-    "deg": 0
-  },
-  "clouds": {
-    "all": 0
-  },
-  "dt": 1645381322,
-  "sys": {
-    "type": 2,
-    "id": 2007545,
-    "country": "ES",
-    "sunrise": 1645340526,
-    "sunset": 1645379721
-  },
-  "timezone": 3600,
-  "id": 3117735,
-  "name": "Madrid",
-  "cod": 200
+    "timezone": 3600,
+    "visibility": 10000,
+    "updatedAt": "2022-03-06T12:34:30.558Z",
+    "windDeg": 0,
+    "windSpeed": 0.51
 }

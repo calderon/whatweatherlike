@@ -4,6 +4,8 @@ const app = require('../../app.js')
 
 const config = require('../../utils/config.js')
 
+const WeatherModel = require('../../models/weather.js')
+
 const endPointUrl = '/api/weather'
 
 const baseParams = {
@@ -12,9 +14,14 @@ const baseParams = {
   lang: 'es',
 }
 
+const openWeatherPayload = require('../mocks/openweather-api.json')
 const weatherPayload = require('../mocks/weather.json')
 
 describe(endPointUrl, () => {
+  beforeAll(() => {
+    WeatherModel.prototype.save = jest.fn().mockResolvedValue(weatherPayload)
+  })
+
   it(`GET ${endPointUrl} with no query fails`, async () => {
     nock('https://api.openweathermap.org/data/2.5').get('/weather').reply(404)
 
@@ -32,7 +39,7 @@ describe(endPointUrl, () => {
     nock('https://api.openweathermap.org/data/2.5')
       .get('/weather')
       .query(params)
-      .reply(200, weatherPayload)
+      .reply(200, openWeatherPayload)
 
     const response = await request(app).get(`${endPointUrl}?q=Madrid&appi`)
 
